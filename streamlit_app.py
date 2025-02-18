@@ -1,4 +1,5 @@
 import streamlit as st
+st.set_page_config(layout="wide")
 import io, time, json, gzip, base64
 import streamlit as st
 import librosa, librosa.display
