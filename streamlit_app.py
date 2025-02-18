@@ -187,7 +187,7 @@ def default_converter(o):
 ####################################
 # Main App
 ####################################
-st.title("Optimized Audio Analysis & Export Dashboard")
+st.title("HMWMM aQi Advanced Analyzer")
 
 uploaded_file = st.file_uploader("Upload an audio file (WAV, MP3, OGG)", type=["wav", "mp3", "ogg"])
 if uploaded_file is not None:
