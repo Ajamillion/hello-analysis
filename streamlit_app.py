@@ -187,9 +187,9 @@ def default_converter(o):
 ####################################
 # Main App
 ####################################
-st.title("HMWMM aQi Advanced Analyzer")
+st.title("HMWMM aQi Deepspace")
 
-uploaded_file = st.file_uploader("Upload an audio file (WAV, MP3, OGG)", type=["wav", "mp3", "ogg"])
+uploaded_file = st.file_uploader("Processing is INTENSE (currently 1 minute per minute of audio) Upload an audio file (WAV, MP3, OGG)", type=["wav", "mp3", "ogg"])
 if uploaded_file is not None:
     y, sr = load_audio(uploaded_file)
     n_channels = y.shape[0]
