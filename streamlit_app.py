@@ -309,7 +309,6 @@ if uploaded_file is not None:
         """)
     
     # Export Data
-    if st.button("Export"):
     st.header("Export Metrics for AI Analysis")
     target_shape = (100,100)
     S_db_summary = spectrogram_summary(S_db, target_shape=target_shape)
@@ -363,6 +362,9 @@ if uploaded_file is not None:
     }
     
     export_json = json.dumps(export_data, default=default_converter, indent=2)
+
+if st.button("Export"):
+    # Show download buttons only after the export trigger is pressed
     st.download_button(label="Export Metrics as JSON",
                        data=export_json,
                        file_name="audio_metrics.json",
@@ -372,5 +374,4 @@ if uploaded_file is not None:
                        file_name="spectrogram.png",
                        mime="image/png")
     st.success("Export complete!")
-    st.stop()  # Prevents further reruns after export
-
+    st.stop()  # Stop further processing/analysis
