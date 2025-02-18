@@ -363,15 +363,35 @@ if uploaded_file is not None:
     
     export_json = json.dumps(export_data, default=default_converter, indent=2)
 
+import streamlit as st
+import json
+
+# Initialize session state flag if not already set
+if "exported" not in st.session_state:
+    st.session_state.exported = False
+
+# Your analysis code here...
+st.write("Main analysis content...")
+
+# Prepare export data
+export_json = json.dumps(export_data, default=default_converter, indent=2)
+
+# When the export button is clicked, set a flag instead of stopping the script
 if st.button("Export"):
-    # Show download buttons only after the export trigger is pressed
-    st.download_button(label="Export Metrics as JSON",
-                       data=export_json,
-                       file_name="audio_metrics.json",
-                       mime="application/json")
-    st.download_button(label="Download Spectrogram Image",
-                       data=buf_spec_img,
-                       file_name="spectrogram.png",
-                       mime="image/png")
+    st.session_state.exported = True
+
+# Check the flag and show export/download buttons if needed
+if st.session_state.exported:
+    st.download_button(
+        label="Export Metrics as JSON",
+        data=export_json,
+        file_name="audio_metrics.json",
+        mime="application/json"
+    )
+    st.download_button(
+        label="Download Spectrogram Image",
+        data=buf_spec_img,
+        file_name="spectrogram.png",
+        mime="image/png"
+    )
     st.success("Export complete!")
-    st.stop()  # Stop further processing/analysis
