@@ -187,7 +187,7 @@ def default_converter(o):
 ####################################
 # Main App
 ####################################
-st.title("HMWMM aQi Deepspace")
+st.title("aQi Deep")
 
 uploaded_file = st.file_uploader("Processing is INTENSE (currently 1 minute per minute of audio) Upload an audio file (WAV, MP3, OGG)", type=["wav", "mp3", "ogg"])
 if uploaded_file is not None:
@@ -197,7 +197,7 @@ if uploaded_file is not None:
     st.metric("File Info", f"{n_channels} channels • {sr} Hz • {duration_sec:.1f} sec")
     
     # Stage 1: Baseline Metrics
-    st.header("Stage 1: Baseline Summary")
+    st.header("Stage 1: Baseline Summary (50%)")
     x = y[0]
     baseline = compute_baseline_metrics(x, y, sr)
     compound = compute_compound_metrics(baseline)
