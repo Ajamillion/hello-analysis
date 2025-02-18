@@ -1,20 +1,5 @@
 import streamlit as st
-
 st.set_page_config(layout="wide")
-
-# Inject custom CSS
-st.markdown(
-    """
-    <style>
-    /* Remove padding and max-width restrictions from the main container */
-    [data-testid="stAppViewContainer"] {
-        padding: 0px !important;
-        max-width: 100% !important;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
 import io, time, json, gzip, base64
 import streamlit as st
 import librosa, librosa.display
@@ -362,37 +347,11 @@ if uploaded_file is not None:
     }
     
     export_json = json.dumps(export_data, default=default_converter, indent=2)
-
-import streamlit as st
-import json
-
-# ----- Initialize session state flag if not already set -----
-if "exported" not in st.session_state:
-    st.session_state.exported = False
-
-# ----- Main analysis code -----
-st.write("Main analysis content...")
-# ... your analysis code here ...
-
-# ----- Prepare export JSON (ensure export_data is defined above) -----
-export_json = json.dumps(export_data, default=default_converter, indent=2)
-
-# ----- Export button: Set the flag when clicked -----
-if st.button("Export"):
-    st.session_state.exported = True
-
-# ----- If export flag is set, display download buttons -----
-if st.session_state.exported:
-    st.download_button(
-        label="Export Metrics as JSON",
-        data=export_json,
-        file_name="audio_metrics.json",
-        mime="application/json"
-    )
-    st.download_button(
-        label="Download Spectrogram Image",
-        data=buf_spec_img,
-        file_name="spectrogram.png",
-        mime="image/png"
-    )
-    st.success("Export complete!")
+    st.download_button(label="Export Metrics as JSON",
+                       data=export_json,
+                       file_name="audio_metrics.json",
+                       mime="application/json")
+    st.download_button(label="Download Spectrogram Image",
+                       data=buf_spec_img,
+                       file_name="spectrogram.png",
+                       mime="image/png")
