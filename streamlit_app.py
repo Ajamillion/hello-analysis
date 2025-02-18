@@ -1,5 +1,20 @@
 import streamlit as st
+
 st.set_page_config(layout="wide")
+
+# Inject custom CSS
+st.markdown(
+    """
+    <style>
+    /* Remove padding and max-width restrictions from the main container */
+    [data-testid="stAppViewContainer"] {
+        padding: 0px !important;
+        max-width: 100% !important;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 import io, time, json, gzip, base64
 import streamlit as st
 import librosa, librosa.display
