@@ -1,1 +1,9 @@
 streamlit
+librosa
+numpy
+pandas
+matplotlib
+scipy
+scikit-image
+pyloudnorm
+SoundFile
