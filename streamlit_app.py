@@ -309,6 +309,7 @@ if uploaded_file is not None:
         """)
     
     # Export Data
+    if st.button("Export"):
     st.header("Export Metrics for AI Analysis")
     target_shape = (100,100)
     S_db_summary = spectrogram_summary(S_db, target_shape=target_shape)
@@ -370,3 +371,6 @@ if uploaded_file is not None:
                        data=buf_spec_img,
                        file_name="spectrogram.png",
                        mime="image/png")
+    st.success("Export complete!")
+    st.stop()  # Prevents further reruns after export
+
