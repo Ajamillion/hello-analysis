@@ -366,21 +366,22 @@ if uploaded_file is not None:
 import streamlit as st
 import json
 
-# Initialize session state flag if not already set
+# ----- Initialize session state flag if not already set -----
 if "exported" not in st.session_state:
     st.session_state.exported = False
 
-# Your analysis code here...
+# ----- Main analysis code -----
 st.write("Main analysis content...")
+# ... your analysis code here ...
 
-# Prepare export data
+# ----- Prepare export JSON (ensure export_data is defined above) -----
 export_json = json.dumps(export_data, default=default_converter, indent=2)
 
-# When the export button is clicked, set a flag instead of stopping the script
+# ----- Export button: Set the flag when clicked -----
 if st.button("Export"):
     st.session_state.exported = True
 
-# Check the flag and show export/download buttons if needed
+# ----- If export flag is set, display download buttons -----
 if st.session_state.exported:
     st.download_button(
         label="Export Metrics as JSON",
